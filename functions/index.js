@@ -1,6 +1,6 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request));
-});
+export const onRequestGet = async ({request}) => {
+  return handleRequest(request);
+}
 
 async function handleRequest(request) {
   let html_content = '';

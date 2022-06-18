@@ -18,6 +18,7 @@ async function handleRequest(request) {
   html_content += '<p> RegionCode: ' + request.cf.regionCode + '</p>';
   html_content += '<p> Timezone: ' + request.cf.timezone + '</p>';
 
+  const clientIP = request.headers.get('CF-Connecting-IP');
   let html = `<!DOCTYPE html>
 <head>
   <title> Geolocation: Hello World </title>
@@ -28,7 +29,7 @@ async function handleRequest(request) {
   <p>You now have access to geolocation data about where your user is visiting from.</p>
   ${html_content}
   <br>
-  ${JSON.stringify(request)}
+  ${JSON.stringify(clientIP)}
 </body>`;
 
   return new Response(html, {

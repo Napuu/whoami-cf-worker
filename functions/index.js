@@ -1,11 +1,9 @@
-export const onRequestGet = async ({request}) => {
-  return Response(JSON.stringify([...request.headers]), {
-  //  headers: Object.fromEntries(request.headers),
-    // cf: request.cf
-  //}), {
-    headers: {
-      'content-type': 'text/html;charset=UTF-8',
-    },
+export function onRequestGet(context) {
+  return new Response(JSON.stringify({
+    headers: Object.fromEntries(context.request.headers),
+    cf: context.request.cf
+  }), {
+    headers: {"content-type": "application/json"}
   });
 }
 
